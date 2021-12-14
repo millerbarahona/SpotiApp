@@ -8,27 +8,45 @@ body, html {
   align-items: center;
   background-color: black;
   min-height: 100vh;
-  padding: 10px;
+  padding: 0 100px;
 }
 
 .songs_container {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 20px;
 }
 
 .input_div {
-  padding: 2rem;
+  display: flex;
+  flex-direction: row;  
+  margin: 20px;
 }
 
 .input {
   padding: 10px;
   border: none;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   width: 30vw;
 }
 
 .input:hover {
   outline: none;
+}
+
+.logo_container {
+  background-color: aquamarine;
+  right: 0;
+  position: relative;
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  padding: 3px;
+}
+
+.logo {
+  width: 50px;
+  
 }

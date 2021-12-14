@@ -5,9 +5,8 @@ export const Song = ({ song }) => {
   const { album, artists, name, duration_ms, photo_url } = song
   let list_artists = '';
   artists.map(artist => {
-    list_artists += ' | ' + artist.name
+    list_artists += '' + artist.name
   })
-  console.log(artists)
   return (
     <div className={styles.song_container}>
       <div className={styles.title_container}>

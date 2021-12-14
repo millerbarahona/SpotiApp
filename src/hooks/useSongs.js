@@ -19,9 +19,9 @@ const useSongs = (access_token, query = 'bad bunny', offset = 0) => {
       cancelToken: new axios.CancelToken(c => cancel = c)
     })
       .then(res => {
-        const listSongs = res.data.tracks.items        
+        const listSongs = res.data.tracks.items
         listSongs.map(song => {          
-          const { album, artists, name, duration_ms } = song
+          const { album, artists, name, duration_ms, preview_url, href, id } = song
           axios(song.album.href, {
             method: 'GET',
             headers: {
@@ -30,13 +30,12 @@ const useSongs = (access_token, query = 'bad bunny', offset = 0) => {
             }
           }).then(img => {
             const photo_url = img.data.images[1].url
-            setSongs(prevSongs => [...prevSongs, { album, artists, name, duration_ms, photo_url }])
+            setSongs(prevSongs => [...prevSongs, { album, artists, name, duration_ms, photo_url, preview_url, href, id }])
           })
         })
         setLoading(false)
       })
       .catch(error => {
-        console.log('error')
         if (axios.isCancel(error)) return
         setError(true)
         setLoading(false)

@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { SpotiApp } from './pages/SpotiApp'
+import { App } from './App'
 
 ReactDOM.render(
   <React.StrictMode>
-    <SpotiApp />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )
