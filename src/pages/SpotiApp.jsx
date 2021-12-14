@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
+import { Song } from '../components/Song';
 import useSongs from '../hooks/useSongs';
 import useToken from '../hooks/useToken'
 
@@ -6,16 +7,19 @@ export const SpotiApp = () => {
   const [query, setQuery] = useState('');
   const [token] = useToken();
   const [songs, loading, error] = useSongs(token, query);
-  console.log(query)
-  
+  const inputRef = useRef();
+  let interval
+  const handleTip = () => {
+    clearTimeout(interval)
+    interval = setTimeout(() => setQuery(inputRef.current.value), 500)
+  }
+
   return (
     <div>
-      <input type="text" value={query} onChange={e => setQuery(e.target.value)}/>
+      <input type="text" onChange={handleTip} ref={inputRef}/>
       {!loading && (
         songs.map((song, index) => (
-          <div key={index}>
-            <h1>{song.name}</h1>
-          </div>
+          <Song song={song} key={index}/>
         ))
       )}
     </div>
