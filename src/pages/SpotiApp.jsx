@@ -11,7 +11,7 @@ export const SpotiApp = () => {
   let interval
   const handleTip = () => {
     clearTimeout(interval)
-    interval = setTimeout(() => setQuery(inputRef.current.value), 500)
+    interval = setTimeout(() => setQuery(inputRef.current.value), 400)
   }
 
   return (
