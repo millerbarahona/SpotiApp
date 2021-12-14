@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 const useToken = () => {
   const id = import.meta.env.VITE_CLIENT_ID_SPOTIFY
   const secret = import.meta.env.VITE_CLIENT_SECRET_SPOTIFY
+  console.log(id)
   const base64 = Base64.encode(id + ':' + secret)
   const [token, setToken] = useState({});
 
@@ -23,7 +24,7 @@ const useToken = () => {
       })
     })
   }, [])
-  
+
   return [token]
 }
 
