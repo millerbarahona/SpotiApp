@@ -32,7 +32,7 @@ export const SongDetail = () => {
                     <h1 className={styles.name_track}>{song.data.name + '| '} <span>{millisToMinutesAndSeconds(song.data.duration_ms)} min</span></h1>
                   </div>
                   <audio controls name="media">
-                    <source src="https://p.scdn.co/mp3-preview/1dcdeca78007b79c6cf5ffe3785f302e11b487e4?cid=2554a2d5811f4d0d9aabfc961a122783" type="audio/mpeg" />
+                    <source src={song.data.preview_url} type="audio/mpeg" />
                   </audio>
                   <div className={styles.album_data}>
                     <h1>{song.data.artists[0].name} |{album.data.name}</h1>
