@@ -47,3 +47,17 @@
   padding: 100px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.name_track {
+  color: aqua;
+}
+
+.name_dontainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.album_data {
+  display: flex;
+  flex-direction: row;
+}

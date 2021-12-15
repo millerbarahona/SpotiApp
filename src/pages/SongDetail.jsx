@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useSong from '../hooks/useSong';
 import useToken from '../hooks/useToken';
 import styles from '../styles/DetailSong.module.css';
+import ReactAudioPlayer from 'react-audio-player';
 
 export const SongDetail = () => {
   let params = useParams();
@@ -17,6 +18,7 @@ export const SongDetail = () => {
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
   console.log(error)
+  console.log(song)
   return (
     <div>
       {
@@ -28,13 +30,18 @@ export const SongDetail = () => {
               <div className={styles.song}>
                 <img className={styles.track_img} src={song.data.album.images[1].url} alt="" />
                 <div>
-                  <h1>{song.data.name}</h1>
-                  <div>
-                    <h1>{song.data.artists[0].name}</h1>
-                    <h1>{album.data.name}</h1>
-                    <h1>{album.data.release_date}</h1>
+                  <div className={styles.name_dontainer}>
+                    <h1 className={styles.name_track}>{song.data.name + '| '} <span>{millisToMinutesAndSeconds(song.data.duration_ms)} min</span></h1>
                   </div>
-                  <h2>{millisToMinutesAndSeconds(song.data.duration_ms)} min</h2>
+                  <ReactAudioPlayer
+                    src={song.data.preview_url}
+                    autoPlay
+                    controls
+                  />
+                  <div className={styles.album_data}>
+                    <h1>{song.data.artists[0].name} |{album.data.name}</h1>
+                  </div>
+                  <h1>{album.data.release_date}</h1>
                 </div>
               </div>
               <div className={styles.album_list}>
