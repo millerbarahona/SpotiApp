@@ -6,7 +6,7 @@ import styles from '../styles/DetailSong.module.css';
 
 export const SongDetail = () => {
   let params = useParams();
-  const navigate =useNavigate();
+  const navigate = useNavigate();
   const [token] = useToken();
   const baseUrl = `https://api.spotify.com/v1/tracks/${params.songId}`;
   const [[song, album], loading, error] = useSong(baseUrl, token);
@@ -16,15 +16,15 @@ export const SongDetail = () => {
     let seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
-
+  console.log(error)
   return (
     <div>
       {
-        !loading && (
+        !loading && !error && (
           <section>
-            
+
             <div className={styles.container} >
-            <button onClick={() => navigate(-1)}>atras</button>
+              <button onClick={() => navigate(-1)}>atras</button>
               <div className={styles.song}>
                 <img className={styles.track_img} src={song.data.album.images[1].url} alt="" />
                 <div>
@@ -50,6 +50,15 @@ export const SongDetail = () => {
               </div>
             </div>
           </section>
+        )
+      }
+      {
+        error && (
+          <div className={styles.error_container}>
+            <button onClick={() => navigate(-1)}>atras</button>
+            <h1>Oooops...</h1>
+            <h2>Hubo un error, inténtalo de nuevo :(</h2>
+          </div>
         )
       }
 

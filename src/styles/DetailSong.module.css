@@ -5,6 +5,7 @@
   flex-direction: column;
   padding: 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  min-height: 100vh;
 }
 
 .song {
@@ -37,4 +38,12 @@
 .track_img {
   border-radius: 10px;
   align-self: center;
+}
+
+.error_container {
+  background-color: black;
+  min-height: 100vh;
+  color: white;
+  padding: 100px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
