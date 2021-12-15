@@ -1,5 +1,6 @@
 body, html {
   margin: 0;
+  text-decoration: none;
 }
 
 .container {
@@ -8,13 +9,14 @@ body, html {
   align-items: center;
   background-color: black;
   min-height: 100vh;
-  padding: 0 100px;
+  padding: 0 20px;
+  max-width: 100vw;
 }
 
 .songs_container {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -28,7 +30,8 @@ body, html {
   padding: 10px;
   border: none;
   border-radius: 10px 0 0 10px;
-  width: 30vw;
+  width: 100%;
+  font-size: large;
 }
 
 .input:hover {
@@ -47,6 +50,74 @@ body, html {
 }
 
 .logo {
-  width: 50px;
-  
+  width: 50px; 
+}
+
+@media (min-width: 600px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    min-height: 100vh;
+    padding: 0 20px;
+    max-width: 100vw;
+  }
+  .input_div {
+    display: flex;
+    flex-direction: row;  
+    width: 30vw;
+  }
+
+  .songs_container {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1000px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    min-height: 100vh;
+    padding: 0 20px;
+    max-width: 100vw;
+  }
+  .input_div {
+    display: flex;
+    flex-direction: row;  
+    width: 30vw;
+  }
+
+  .songs_container {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+  }
+}
+
+@media (min-width: 1300px) {
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    min-height: 100vh;
+    padding: 0 50px;
+    max-width: 100vw;
+  }
+  .input_div {
+    display: flex;
+    flex-direction: row;  
+    width: 30vw;
+  }
+
+  .songs_container {
+    grid-template-columns: repeat(5, 1fr);
+    padding: 20px;
+  }
 }

@@ -1,0 +1,40 @@
+.container {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.song {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.album_list {
+  background-color: #7D19E1;
+  border-radius: 10px;
+  font-weight: 100;
+  font-size: medium;
+}
+
+.track {
+  font-weight: 100;
+  font-size: large;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.track_container {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.track_img {
+  border-radius: 10px;
+  align-self: center;
+}

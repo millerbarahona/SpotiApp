@@ -6,11 +6,10 @@ const useSongs = (access_token, query = 'bad bunny', offset = 0) => {
   const [songs, setSongs] = useState([]);
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-
-  useEffect(() => {
+  useEffect(() => {    
     let cancel
     if (offset === 0) setSongs([])
-    axios(`https://api.spotify.com/v1/search?q=${query}&type=track&limit=20&${offset > 0 && `&offset=${offset}`}`, {
+    axios(`https://api.spotify.com/v1/search?q=${query}&type=track&limit=20&${offset > 0 && `&offset=${offset * 20}`}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -41,7 +40,7 @@ const useSongs = (access_token, query = 'bad bunny', offset = 0) => {
         setLoading(false)
       })
     return () => cancel();
-  }, [query, offset]);
+  }, [access_token ,query, offset]);
 
   return [songs, loading, error]
 }
