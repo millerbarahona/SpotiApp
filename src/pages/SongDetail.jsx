@@ -17,7 +17,7 @@ export const SongDetail = () => {
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
   return (
-    <div>
+    <div >
       {
         !loading && !error && (
           <section>

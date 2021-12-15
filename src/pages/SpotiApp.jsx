@@ -24,18 +24,20 @@ export const SpotiApp = () => {
   }, []);
 
   const handleTip = () => {
-    setPageNumber(0);
     const q = inputRef.current.value
     setSearchParams({ q })
+    setPageNumber(0);
     clearTimeout(interval)
     interval = setTimeout(() => setQuery(inputRef.current.value), 1000)
   }
 
-  const lastSongRef = useCallback(node => {    
+  const lastSongRef = useCallback(node => {
     if (observer.current) observer.current.disconnect()
 
     observer.current = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {                
+      if (entries[0].isIntersecting) {
+        console.log(songs.length)
+        console.log(entries[0].target)
         setPageNumber(prevPageNumber => prevPageNumber + 1);
       }
     })
@@ -44,13 +46,13 @@ export const SpotiApp = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.input_div}>
-        <input className={styles.input} type="text" onChange={handleTip} ref={inputRef} placeholder='Ingrese una canción etc' value={searchParams.get('q') || ''} />
+      <div className={styles.input_div} id='input_container'>
+        <input className={styles.input} id='input' type="text" onChange={handleTip} ref={inputRef} placeholder='Ingrese una canción etc' value={searchParams.get('q') || ''} />
         <div className={styles.logo_container}>
           <img src="https://cdn-icons-png.flaticon.com/512/49/49097.png" alt="" className={styles.logo} />
         </div>
       </div>
-      <section className={styles.songs_container}>
+      <section className={styles.songs_container} id='songs_container'>
         {!loading && (
           songs.map((song, index) => {
             if (index + 1 === songs.length) {
