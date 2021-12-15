@@ -16,22 +16,22 @@ export const SongDetail = () => {
     let seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
-  console.log(song)
   return (
     <div>
       {
         !loading && !error && (
           <section>
-
             <div className={styles.container} >
-              <button onClick={() => navigate(-1)}>atras</button>
               <div className={styles.song}>
+                <button onClick={() => navigate(-1)} className={styles.back_button}>
+                  <img src="https://cdn.icon-icons.com/icons2/2596/PNG/512/return_icon_154912.png" alt="" style={{ width: 40 }} />
+                </button>
                 <img className={styles.track_img} src={song.data.album.images[1].url} alt="" />
                 <div>
                   <div className={styles.name_dontainer}>
                     <h1 className={styles.name_track}>{song.data.name + '| '} <span>{millisToMinutesAndSeconds(song.data.duration_ms)} min</span></h1>
                   </div>
-                  <audio controls name="media">
+                  <audio controls name="media" className={styles.audio}>
                     <source src={song.data.preview_url} type="audio/mpeg" />
                   </audio>
                   <div className={styles.album_data}>
@@ -42,11 +42,18 @@ export const SongDetail = () => {
               </div>
 
               <div className={styles.album_list}>
-                <div>
+                <h1>Album List</h1>
+                <hr />
+                <div className={styles.tracks_list}>
                   {
                     album.data.tracks.items.map((track, index) => (
                       <div className={styles.track_container} key={index}>
-                        <h1 className={styles.track} >{track.name}</h1>
+                        <div>
+                          <h1 className={styles.track} >{track.name}</h1>
+                        </div>
+                        <div>
+                          <h2 className={styles.duration}>{millisToMinutesAndSeconds(track.duration_ms)} min</h2>
+                        </div>
                       </div>
                     ))
                   }

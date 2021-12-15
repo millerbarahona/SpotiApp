@@ -1,11 +1,13 @@
-.container {
+body {
   background-color: black;
+}
+.container {  
   color: white;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
   padding: 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 .song {
@@ -13,6 +15,8 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
+  padding: 10px 0px;
+  max-height: 700px;
 }
 
 .album_list {
@@ -20,9 +24,23 @@
   border-radius: 10px;
   font-weight: 100;
   font-size: medium;
+  margin: 10px;
+  padding: 10px;
+  height: min-content;
+}
+
+.tracks_list {
+  padding: 10px;
 }
 
 .track {
+  font-weight: 100;
+  font-size: large;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.duration {
   font-weight: 100;
   font-size: large;
   text-overflow: ellipsis;
@@ -33,6 +51,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  display: flex;
+  justify-content: space-between;
 }
 
 .track_img {
@@ -60,4 +80,26 @@
 .album_data {
   display: flex;
   flex-direction: row;
+}
+
+.audio {
+  filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+  width: 200px;
+  height: 25px;
+}
+
+.back_button {
+  height: 50px;
+  width: 100%;
+  background-color: #7D19E1;
+  border: none;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
+}
+
+@media (min-width: 900px){ 
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
 }
