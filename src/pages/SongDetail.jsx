@@ -16,6 +16,7 @@ export const SongDetail = () => {
     let seconds = ((millis % 60000) / 1000).toFixed(0);
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
+  console.log(song)
   return (
     <div>
       {
@@ -30,12 +31,16 @@ export const SongDetail = () => {
                   <div className={styles.name_dontainer}>
                     <h1 className={styles.name_track}>{song.data.name + '| '} <span>{millisToMinutesAndSeconds(song.data.duration_ms)} min</span></h1>
                   </div>
+                  <audio controls name="media">
+                    <source src="https://p.scdn.co/mp3-preview/1dcdeca78007b79c6cf5ffe3785f302e11b487e4?cid=2554a2d5811f4d0d9aabfc961a122783" type="audio/mpeg" />
+                  </audio>
                   <div className={styles.album_data}>
                     <h1>{song.data.artists[0].name} |{album.data.name}</h1>
                   </div>
                   <h1>{album.data.release_date}</h1>
                 </div>
               </div>
+
               <div className={styles.album_list}>
                 <div>
                   {
